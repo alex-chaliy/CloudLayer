@@ -1,2 +1,2 @@
 # CloudLayer
-Music Player • Javascript
+Music Player • Typescript
