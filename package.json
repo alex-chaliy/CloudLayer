@@ -1,0 +1,19 @@
+{
+  "name": "file_streamer",
+  "version": "1.0.0",
+  "description": "File Streamer",
+  "main": "server.js",
+  "scripts": {
+    "start": "npm run build-watching && npm run server-watching",
+    "server": "node server.js",
+    "server-watching": "nodemon server.js",
+    "build": "tsc server.ts && tsc ./client/client.ts",
+    "build-watching": "tsc -w ./server.ts ./client/client.ts"
+  },
+  "author": "Alex Chaliy",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^7.0.18"
+  }
+}
