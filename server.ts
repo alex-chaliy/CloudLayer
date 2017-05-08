@@ -1,7 +1,67 @@
+//-- run server --
+import * as express from 'express';
+
+const conf = {
+	serv: {
+		addr: 'http://localhost',
+		port: 1010
+	}
+};
+
+const app = express();
+app.listen(conf.serv.port, ()=>{ console.log('server running at ' + conf.serv.addr+':'+conf.serv.port) });
+app.use("/", express.static(__dirname + '/client'));
+//-end- run server --
+
+
+
 import * as fs from 'fs';
 
+
+enum EntityType {
+	File = 10,
+	File_IMAGE = 11,
+	File_MPEG = 12,
+
+	Some = 20,
+	Some_A = 21,
+	Some_B = 22
+};
+const Status = {
+	ERROR: '00',
+	SUCCESS: '11'
+}
+const Info = {
+	[EntityType.File] : {
+		[Status.ERROR] : {
+			NO_INFO: '00',
+			BAD_FILE: '01',
+			READ_FILE_INTERRUPTED: '02'
+			// ...
+		},
+		[Status.SUCCESS] : {
+			NO_INFO: '00',
+			FILE_WAS_READ: '01',
+			FILE_CHUNK_WAS_READ: '02'
+			// ...
+		}
+	}
+}
+const StatusCodes = {
+	STOP_FILE_READING__SUCCESS: '' + EntityType.File + Status.SUCCESS +
+								Info[EntityType.File][Status.SUCCESS]['FILE_CHUNK_WAS_READ']
+};
+
+console.log(StatusCodes['STOP_FILE_READING__SUCCESS']);
+console.log('\n---\n');
+console.log(Info[EntityType.File][Status.SUCCESS]['FILE_CHUNK_WAS_READ']);
+
+
+
 interface IFileStreamer {
-	readFile():void;
+	isThereFileChunks():boolean;
+	stopFileReading():number;
+
 	readFileByChunks():void;
 }
 
@@ -9,7 +69,7 @@ interface IFileStreamer {
 let someFile;
 
 fs.readFile('./uploads/music/Xavier-Wulf---Hear-Yee.mp3', (err, data) => {
-	console.log('\n [1] music-file reading... \n');
+	// console.log('\n [1] music-file reading... \n');
 	if (err) throw err;
 	// console.log( data );
 	someFile = data;
@@ -43,7 +103,7 @@ fs.open(filePath, 'r', (err, fd)=>{ // fd - file data
 				data = buffer;
 
 			// do something with `data`, then call `readNextChunk();`
-			console.log('\n--------------------\n another chunk ---> ', data);
+			// console.log('\n--------------------\n another chunk ---> ', data);
 			readNextChunk();
 		});
 	}
