@@ -33,3 +33,10 @@ http://stackoverflow.com/a/42435099
 npm i concurrently --save-dev <br>
 "start": " concurrently --kill-others \"npm run build-watching\" \"npm run server-watching\" ", <br>
 http://stackoverflow.com/a/30950298
+
+• error TS2339: Property 'Server' does not exist on type 'typeof "http"' <br>
+
+import * as _http from 'http'; <br>
+let http:any = _http; <br>
+
+http://stackoverflow.com/a/18085870

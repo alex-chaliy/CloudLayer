@@ -2,8 +2,6 @@
 // I have to use self-invoking function wrapper
 ;(function(){
 
-let b = '000 sd';
-let sdfdsf = 555;
-let c = 7;
+let data = 'data';
 
 })();

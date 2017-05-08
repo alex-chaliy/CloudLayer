@@ -2,7 +2,5 @@
 // I have to use self-invoking function wrapper
 ;
 (function () {
-    var b = '000 sd';
-    var sdfdsf = 555;
-    var c = 7;
+    var data = 'data';
 })();

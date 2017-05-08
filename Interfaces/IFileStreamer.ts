@@ -20,5 +20,5 @@ export interface IFileStreamer {
 
 	// readFileByChunks():void;
 
-	streamFileByChunks():void;
+	streamFileByChunks(socketIO: any):void;
 }

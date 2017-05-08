@@ -25,7 +25,7 @@ export class FileStreamer implements IFileStreamer {
 
 	SendChunkToClient():number {return 1;}
 
-	streamFileByChunks():void {
+	streamFileByChunks(socketIO: any):void {
 		const CHUNK_SIZE = 0.1 * 1024 * 1024; // 0.1MB
 		const buffer = new Buffer(CHUNK_SIZE);
 		const filePath = './uploads/music/Xavier-Wulf---Hear-Yee.mp3';
@@ -55,8 +55,11 @@ export class FileStreamer implements IFileStreamer {
 
 
 					/** stream current chunk to client **/
+					// socketIO.emit('FileChunk', data);
 
-					readNextChunk();
+
+					// ! UNCOMMENT to Read all Chunks
+					// readNextChunk();
 				});
 			}
 			readNextChunk();
