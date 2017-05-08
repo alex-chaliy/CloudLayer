@@ -18,5 +18,7 @@ export interface IFileStreamer {
 
 
 
-	readFileByChunks():void;
+	// readFileByChunks():void;
+
+	streamFileChunk():void;
 }
