@@ -1,5 +1,11 @@
 import * as fs from 'fs';
 
+interface IFileStreamer {
+	readFile():void;
+	readFileByChunks():void;
+}
+
+
 let someFile;
 
 fs.readFile('./uploads/music/Xavier-Wulf---Hear-Yee.mp3', (err, data) => {
