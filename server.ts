@@ -22,9 +22,5 @@ import { StatusCodes } from './Services/StatusCode';
 // Interfaces
 import { IFileStreamer } from './Interfaces/IFileStreamer';
 
-
-// Examples
-import { readFile } from './Examples/Read-File--example';
-// readFile();
-import { readFileByChunks } from './Examples/Read-File-by-Chunks--example';
-// readFileByChunks();
+// Classes
+import { FileStreamer } from './Classes/FileStreamer';
